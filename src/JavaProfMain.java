@@ -39,16 +39,15 @@ public class JavaProfMain {
         cats.add(new Cat("mart","white"));
         cats.add(new Cat("tapok","black"));
 
-        System.out.println(new House<Cat>(cats));
+        new House<>(cats).whoIsHere();
 
-        //видим, что дженерики не позволяют добавить собак в массив кошек
         ArrayList<Dog> dogs = new ArrayList<>();
-        dogs.add(new Cat("mart","white"));
-        dogs.add(new Cat("tapok","black"));
-
-        System.out.println(new House<Dog>(cats));
+        dogs.add(new Dog("jack","orange"));
+        dogs.add(new Dog("muhtar","brown"));
+//можно в дженериках не писать House<Dog>, а оставлять пустым <>
+        new House<>(dogs).whoIsHere();
     }
-    public static class Cat {
+    public static class Cat implements Animal {
         private String name;
         private String color;
 
@@ -64,9 +63,18 @@ public class JavaProfMain {
                     ", color='" + color + '\'' +
                     '}';
         }
+
+        @Override
+        public void sound() {
+            System.out.println("meow");
+        }
     }
 
-    public static class Dog {
+    public interface Animal {
+        void sound();
+    }
+
+    public static class Dog implements Animal {
         private String name;
         private String color;
 
@@ -82,13 +90,24 @@ public class JavaProfMain {
                     ", color='" + color + '\'' +
                     '}';
         }
+
+        @Override
+        public void sound() {
+            System.out.println("woof");
+        }
     }
 
-    private static class House<A> {
+    private static class House<A extends Animal> {
         private List<A> animals;
 
         public House(List<A> animals) {
             this.animals = animals;
+        }
+
+        public void whoIsHere() {
+            for (Animal a: animals) {
+                a.sound();
+            }
         }
 
         @Override
