@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class JavaProfMain {
@@ -11,5 +12,26 @@ public class JavaProfMain {
         arr[3] = 4;
 
         System.out.println("Arrays.toString(arr) = " + Arrays.toString(arr));
+
+        //чтоб не думать, что нам нужно расширять массив, мы используем
+        //ArrayList типа сосуда, который будет пополняться
+        ArrayList<String> strings = new ArrayList<>();
+        strings.add("1");
+        strings.add("2");
+        strings.add("3");
+        System.out.println("strings = " + strings);
+        strings.add("4");
+        System.out.println("strings = " + strings);
+
+        for (String s: strings) {
+            System.out.println(s.length());
+        }
+
+        ArrayList<Integer> intList = new ArrayList<>();
+        intList.add(1);
+
+        for (Integer i: intList) {
+            System.out.println(i*i);
+        }
     }
 }
