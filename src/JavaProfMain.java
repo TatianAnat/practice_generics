@@ -40,6 +40,13 @@ public class JavaProfMain {
         cats.add(new Cat("tapok","black"));
 
         System.out.println(new House<Cat>(cats));
+
+        //видим, что дженерики не позволяют добавить собак в массив кошек
+        ArrayList<Dog> dogs = new ArrayList<>();
+        dogs.add(new Cat("mart","white"));
+        dogs.add(new Cat("tapok","black"));
+
+        System.out.println(new House<Dog>(cats));
     }
     public static class Cat {
         private String name;
@@ -53,6 +60,24 @@ public class JavaProfMain {
         @Override
         public String toString() {
             return "Cat{" +
+                    "name='" + name + '\'' +
+                    ", color='" + color + '\'' +
+                    '}';
+        }
+    }
+
+    public static class Dog {
+        private String name;
+        private String color;
+
+        public Dog(String name, String color) {
+            this.name = name;
+            this.color = color;
+        }
+
+        @Override
+        public String toString() {
+            return "Dog{" +
                     "name='" + name + '\'' +
                     ", color='" + color + '\'' +
                     '}';
