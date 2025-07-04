@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class JavaProfMain {
     public static void main(String[] args) {
@@ -33,5 +34,42 @@ public class JavaProfMain {
         for (Integer i: intList) {
             System.out.println(i*i);
         }
+
+        ArrayList<Cat> cats = new ArrayList<>();
+        cats.add(new Cat("mart","white"));
+        cats.add(new Cat("tapok","black"));
+
+        System.out.println(new House<Cat>(cats));
+    }
+    public static class Cat {
+        private String name;
+        private String color;
+
+        public Cat(String name, String color) {
+            this.name = name;
+            this.color = color;
+        }
+
+        @Override
+        public String toString() {
+            return "Cat{" +
+                    "name='" + name + '\'' +
+                    ", color='" + color + '\'' +
+                    '}';
+        }
+    }
+
+    private static class House<A> {
+        private List<A> animals;
+
+        public House(List<A> animals) {
+            this.animals = animals;
+        }
+
+        @Override
+        public String toString() {
+            return "Дом для животных, живут: " + animals;
+        }
+
     }
 }
