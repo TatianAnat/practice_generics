@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class JavaProfMain {
     public static void main(String[] args) {
@@ -66,7 +63,40 @@ public class JavaProfMain {
         System.out.println("arrayStrings = " + arrayStrings);
         System.out.println("arrayStrings = " + arrayStrings.get(0));
 
+        //в практике массив объявляется так
+        List<Integer> integerList = new ArrayList<>();
+        integerList.add(43);
+        integerList.add(43);
+        integerList.add(43);
+
+        integerList = List.of(42,43,45);
+        writeList(integerList);
+//        integerList.add(444);
+//        writeList(integerList);
+
+        ArrayList<Integer> mutableList = new ArrayList<>(integerList);
+        mutableList.add(444);
+        System.out.println(mutableList);
+
+        System.out.println(integerList.contains(444));
+        System.out.println(mutableList.contains(444));
+
+        System.out.println("Джек есть?" + dogs.contains(new Dog("jack","orange")));
+
     }
+
+//    public static void writeList(LinkedList<Integer> integers) {
+//        System.out.println("Integers = " + integers);
+//    }
+//
+//    public static void writeList(ArrayList<Integer> integers) {
+//        System.out.println("Integers = " + integers);
+//    }
+    //Библиотеки пишутся через List, чтоб не зависеть от реализации
+    public static void writeList(List<Integer> integers) {
+        System.out.println("Integers = " + integers);
+    }
+
     public static class Cat implements Animal {
         private String name;
         private String color;
@@ -101,6 +131,19 @@ public class JavaProfMain {
         public Dog(String name, String color) {
             this.name = name;
             this.color = color;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            //проверяется равенство ссылок
+            if (this == o) return true;
+            if (!(o instanceof Dog)) return false;
+            return Objects.equals(name, ((Dog)o).name) && Objects.equals(color, ((Dog)o).color);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(name, color);
         }
 
         @Override
