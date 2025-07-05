@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class JavaProfMain {
@@ -46,6 +47,25 @@ public class JavaProfMain {
         dogs.add(new Dog("muhtar","brown"));
 //можно в дженериках не писать House<Dog>, а оставлять пустым <>
         new House<>(dogs).whoIsHere();
+
+        LinkedList<String> linkedStrings = new LinkedList<>();
+        linkedStrings.add("1");
+        linkedStrings.add("2");
+        linkedStrings.add("3");
+        linkedStrings.remove(0);
+        //выводим весь список
+        System.out.println("LinkedStrings = " + linkedStrings);
+        //выводим первый элемент
+        System.out.println("LinkedStrings = " + linkedStrings.get(0));
+
+        ArrayList<String> arrayStrings = new ArrayList<>();
+        arrayStrings.add("1");
+        arrayStrings.add("2");
+        arrayStrings.add("3");
+        arrayStrings.remove(0);
+        System.out.println("arrayStrings = " + arrayStrings);
+        System.out.println("arrayStrings = " + arrayStrings.get(0));
+
     }
     public static class Cat implements Animal {
         private String name;
