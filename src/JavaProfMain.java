@@ -65,12 +65,12 @@ public class JavaProfMain {
 
         //в практике массив объявляется так
         List<Integer> integerList = new ArrayList<>();
+        integerList.add(89);
         integerList.add(43);
-        integerList.add(43);
-        integerList.add(43);
+        integerList.add(1);
 
-        integerList = List.of(42,43,45);
-        writeList(integerList);
+//        integerList = List.of(42,43,45);
+//        writeList(integerList);
 //        integerList.add(444);
 //        writeList(integerList);
 
@@ -83,7 +83,11 @@ public class JavaProfMain {
 
         System.out.println("Джек есть?" + dogs.contains(new Dog("jack","orange")));
 
-    }
+        mutableList.sort(Comparator.naturalOrder());
+        System.out.println("mutableList sorted = " + mutableList);
+        }
+
+
 
 //    public static void writeList(LinkedList<Integer> integers) {
 //        System.out.println("Integers = " + integers);
