@@ -83,7 +83,19 @@ public class JavaProfMain {
 
         System.out.println("Джек есть?" + dogs.contains(new Dog("jack","orange")));
 
-        mutableList.sort(Comparator.naturalOrder());
+//        mutableList.sort(Comparator.naturalOrder());
+//        System.out.println("mutableList sorted = " + mutableList);
+//        mutableList.sort(new Comparator<Integer>() {
+//            @Override
+//            public int compare(Integer o1, Integer o2) {
+//                //сортировка в обратном порядке
+//                return o2.intValue() - o1.intValue();
+//            }
+//        });
+//        System.out.println("mutableList sorted = " + mutableList);
+
+        //можно сделать лямбдой
+        mutableList.sort((o1, o2) -> o2.intValue() - o1.intValue());
         System.out.println("mutableList sorted = " + mutableList);
         }
 
